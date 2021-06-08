@@ -60,49 +60,6 @@ namespace FraWork.Mobile
             }
         }
 
-        /// <summary>
-        /// Attempts to retrieve the relevant swipe information relating the the passed ID.
-        /// </summary>
-        /// <param name="_index">The fingerID we are attempting to get the swipe for.</param>
-        /// <returns>The corresponding swipe if it exists, otherwise null.</returns>
-        //public static SwipeInput.Swipe GetSwipe(int _index)
-        //{
-        //    // if the mobile input isn't initialised, thrown an InvalidOperationException
-        //    if (!Initialised)
-        //    {
-        //        throw new InvalidOperationException("Mobile Input not initialised.");
-        //    }
-
-        //    // if the swipe input module isn't set, throw a NullReferenceException
-        //    if (instance.swipeInput == null)
-        //    {
-        //        throw new NullReferenceException("Swipe Input reference not set.");
-        //    }
-
-        //    // Retrieve the swipe for this index from the swipe input manager
-        //    return instance.swipeInput.GetSwipe(_index);
-        //}
-
-        //public static void GetFlickData(out float _flickPower, out Vector2 _flickDirection)
-        //{
-        //    // if the mobile input isn't initialised, thrown an InvalidOperationException
-        //    if (!Initialised)
-        //    {
-        //        throw new InvalidOperationException("Mobile Input not initialised.");
-        //    }
-
-        //    // if the swipe input module isn't set, throw a NullReferenceException
-        //    if (instance.swipeInput == null)
-        //    {
-        //        throw new NullReferenceException("Swipe Input reference not set.");
-        //    }
-
-        //    // Set the out parameters to their corresponding values in the swipe input class
-        //    _flickPower = instance.swipeInput.FlickPower;
-        //    _flickDirection = instance.swipeInput.FlickDirection;
-        //}
-
         [SerializeField] private JoystickInput joystickInput;
-        //[SerializeField] private SwipeInput swipeInput;
     }
 }

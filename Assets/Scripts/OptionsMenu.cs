@@ -4,6 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class that contains the methods for the OptionsScreen
+/// </summary>
 public class OptionsMenu : MonoBehaviour
 {
     [SerializeField] private GameObject gameSettingsTab;
@@ -14,14 +17,17 @@ public class OptionsMenu : MonoBehaviour
 
     private void Awake()
     {
+        // Fill the list with all the toggles (active and inactives) in the options menu
         toggleList = GetComponentsInChildren<Toggle>(true).ToList();
     }
 
     private void OnEnable()
     {
+        // Check if there are already saved values in the system, if not use a default value
         float matchTime = PlayerPrefs.GetFloat("matchTime", 1f);
         int maxScore = PlayerPrefs.GetInt("maxScore", 2);
 
+        // select the toggle based on the matchtime value and toggle it on
         switch (matchTime)
         {
             case 1f: toggleList.FirstOrDefault(toggle => toggle.name == "1minToggle").isOn = true; break;
@@ -32,6 +38,7 @@ public class OptionsMenu : MonoBehaviour
             case -1f: toggleList.FirstOrDefault(toggle => toggle.name == "NoMinLimitToggle").isOn = true; break;
         }
 
+        // select the toggle based on the maxScore value and toggle it on
         switch (maxScore)
         {
             case 1: toggleList.FirstOrDefault(toggle => toggle.name == "1GoalToggle").isOn = true; break;
@@ -45,6 +52,9 @@ public class OptionsMenu : MonoBehaviour
         SelectGameSettingsTab();            
     }
 
+    /// <summary>
+    /// Set active the GameSettings tab
+    /// </summary>
     public void SelectGameSettingsTab()
     {
         gameSettingsTab.SetActive(true);
@@ -52,6 +62,9 @@ public class OptionsMenu : MonoBehaviour
         audioTab.SetActive(false);
     }
 
+    /// <summary>
+    /// Set active the GraphicsSettings tab
+    /// </summary>
     public void SelectGraphicsTab()
     {
         gameSettingsTab.SetActive(false);
@@ -59,6 +72,9 @@ public class OptionsMenu : MonoBehaviour
         audioTab.SetActive(false);
     }
 
+    /// <summary>
+    /// Set active the AudioSettings tab
+    /// </summary>
     public void SelectAudioTab()
     {
         gameSettingsTab.SetActive(false);
@@ -66,11 +82,16 @@ public class OptionsMenu : MonoBehaviour
         audioTab.SetActive(true);
     }
 
-
+    // Region containing the GameSettings
     #region Game Settings
-
+    
+    // Region containing the functions to update the matchtime toggles
     #region MatchTimeToggles
 
+    /// <summary>
+    /// Set the match time to 1 minute
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMatchTimeOne(bool isOn)
     {
         if (isOn)
@@ -80,6 +101,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the match time to 2 minutes
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMatchTimeTwo(bool isOn)
     {
         if (isOn)
@@ -89,6 +114,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the match time to 3 minutes
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMatchTimeThree(bool isOn)
     {
         if (isOn)
@@ -98,6 +127,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the match time to 5 minutes
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMatchTimeFive(bool isOn)
     {
         if (isOn)
@@ -107,6 +140,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the match time to 10 minutes
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMatchTimeTen(bool isOn)
     {
         if (isOn)
@@ -116,6 +153,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the match time without limit
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMatchTimeNoLimit(bool isOn)
     {
         if (isOn)
@@ -127,8 +168,13 @@ public class OptionsMenu : MonoBehaviour
 
     #endregion
 
+    // Region containing the functions to update the goal score limit toggles
     #region ScoreLimitToggles
 
+    /// <summary>
+    /// Set the goal score limit to 1
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMaxScoreOne(bool isOn)
     {
         if (isOn)
@@ -138,6 +184,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the goal score limit to 2
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMaxScoreTwo(bool isOn)
     {
         if (isOn)
@@ -147,6 +197,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the goal score limit to 3
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMaxScoreThree(bool isOn)
     {
         if (isOn)
@@ -156,6 +210,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the goal score limit to 5
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMaxScoreFive(bool isOn)
     {
         if (isOn)
@@ -165,6 +223,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the goal score limit to 10
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMaxScoreTen(bool isOn)
     {
         if (isOn)
@@ -174,6 +236,10 @@ public class OptionsMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the goal score limit to unlimited
+    /// </summary>
+    /// <param name="isOn">bool value of the toggle</param>
     public void SetMaxScoreNoLimit(bool isOn)
     {
         if (isOn)
